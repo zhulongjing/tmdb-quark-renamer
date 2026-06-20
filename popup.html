@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TMDB 影视重命名</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h3>🎬 TMDB 影视重命名</h3>
+    
+    <!-- 状态提示区 -->
+    <div id="status" class="status"></div>
+    
+    <!-- TMDB API Key 配置 -->
+    <div class="config-section">
+      <label>TMDB API Key:</label>
+      <input type="password" id="apiKey" placeholder="请输入你的 TMDB API Key">
+      <button id="saveKey">保存</button>
+    </div>
+    <div class="config-section">
+      <label style="display: flex; align-items: center; gap: 8px;">
+        🤖 本地AI智能解析（已内置）
+        <span style="font-size: 10px; color: #00d9ff;">无需外部API</span>
+      </label>
+      <div style="font-size: 11px; color: #aaa; margin-top: 4px; line-height: 1.5;">
+        插件内置智能文件名解析引擎，可自动识别：<br>
+        · 中英文影名 + 年份 · 季/集编号 · 分辨率 & 编码格式<br>
+        · 自动过滤压制组标签 · 智能匹配最佳 TMDB 结果
+      </div>
+    </div>
+    
+    <!-- 加载动画 -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">🤖 正在智能匹配...</div>
+      <div class="loading-progress" id="loadingProgress">0 / 0</div>
+    </div>
+    
+    <!-- 文件列表 -->
+    <div id="fileList" class="file-list">
+      <p class="placeholder">请在夸克网盘勾选文件后点击插件图标</p>
+    </div>
+    
+    <!-- 重命名规则配置 -->
+    <div class="rule-section">
+      <label>命名格式:</label>
+      <select id="nameFormat">
+        <option value="movie">[名称][年份][分辨率].扩展名</option>
+        <option value="tv">[名称][S01E01][年份][分辨率].扩展名</option>
+        <option value="simple">名称 (年份).扩展名</option>
+      </select>
+    </div>
+    
+    <!-- 操作按钮 -->
+    <div class="actions">
+      <button id="batchRename" class="btn-primary" disabled>批量重命名</button>
+    </div>
+    <div class="debug-actions" style="margin-top: 8px; display: flex; gap: 6px;">
+      <button id="captureBtn" class="btn" style="flex:1; background:#555; color:white; font-size:11px; padding:4px 8px;">📡 捕获请求</button>
+      <button id="viewCaptureBtn" class="btn" style="flex:1; background:#555; color:white; font-size:11px; padding:4px 8px;">🔍 查看捕获</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
